@@ -1,4 +1,4 @@
-export class CounterState {
+export interface CounterState {
   value: number;
 }
 

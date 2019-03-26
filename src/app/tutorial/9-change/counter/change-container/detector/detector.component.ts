@@ -1,16 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  OnInit
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-detector',
   templateUrl: './detector.component.html',
   styleUrls: ['./detector.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetectorComponent implements OnInit, OnDestroy {

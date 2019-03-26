@@ -13,12 +13,12 @@ export const INITIAL_ITEMS_STATE: ItemsState = {
   message: ''
 };
 
-const featureSelector = createFeatureSelector('items');
+const itemsFeatureSelector = createFeatureSelector('items');
 export const messageSelector = createSelector(
-  featureSelector,
+  itemsFeatureSelector,
   (state: ItemsState) => state.message
 );
 export const completedOkSelector = createSelector(
-  featureSelector,
+  itemsFeatureSelector,
   (state: ItemsState) => state.completedOk
 );

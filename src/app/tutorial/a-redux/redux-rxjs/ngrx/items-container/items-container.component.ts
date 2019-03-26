@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { GlobalService } from '../../../../../core/global.service';
 import { GetAll, Post } from '../store/root/items/items.actions';
 import {
@@ -18,7 +18,7 @@ import { RootState } from '../store/root/root.state';
 export class ItemsContainerComponent implements OnInit {
   public itemsRedux$: Observable<any[]>;
   public item: any = { description: '' };
-  private iLikeRisks = false;
+  private iLikeRisks = true;
   constructor(
     private store: Store<RootState>,
     private globalService: GlobalService
@@ -30,7 +30,10 @@ export class ItemsContainerComponent implements OnInit {
     this.store.select(messageSelector).subscribe(this.showMessage);
     this.store
       .select(completedOkSelector)
-      .pipe(map(isOk => (isOk ? 'Job done!' : 'Working on it...')))
+      .pipe(
+        tap(() => this.globalService.setMessage('pausa')),
+        map(isOk => (isOk ? 'Job done!' : 'Working on it...'))
+      )
       .subscribe(this.showMessage);
   }
 

@@ -1,7 +1,13 @@
 <h4>
   async works!
 </h4>
-<div>
-  items:
-  <pre> {{ items$ | async |  json }} </pre>
+<div *ngIf="(items$ | async) as items">
+  <div>
+    count :
+    <pre> {{ items.length }} </pre>
+  </div>
+  <div>
+    items:
+    <pre> {{ items |  json }} </pre>
+  </div>
 </div>

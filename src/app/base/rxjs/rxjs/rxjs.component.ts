@@ -43,8 +43,8 @@ export class RxjsComponent implements OnInit {
 
   ngOnInit() {
     this.constructObservables();
+    // this.subscribeBefore();
     this.emitValues();
-    this.subscribeBefore();
     // this.subscribeLater();
     this.operate();
   }
@@ -59,6 +59,7 @@ export class RxjsComponent implements OnInit {
   private emitValues() {
     const interval = setInterval(() => {
       const v = Math.floor(Math.random() * 1000 + 1);
+      console.warn(v);
       this.subject$.next(v);
       this.behaviorSubject$.next(v);
       this.replaySubject$.next(v);
